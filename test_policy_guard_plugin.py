@@ -23,8 +23,7 @@ def make_plugin(**kwargs) -> PolicyGuardPlugin:
     config = PolicyConfig(
         secret_values=["hunter2", "supersecrettoken"],
         secret_env_vars=[],            # skip env in unit tests
-        block_on_violation=True,
-        **kwargs,
+        **{"block_on_violation": True, **kwargs},
     )
     return PolicyGuardPlugin(config=config)
 
